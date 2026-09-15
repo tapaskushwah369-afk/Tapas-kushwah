@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tapa Kushwah Art | Original Paintings & Sketches</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-canvas: #fbf7f0;
+            --primary-terracotta: #8c3b2b;
+            --accent-gold: #c68b59;
+            --charcoal: #2b2927;
+            --soft-cream: #f4ece1;
+            --border-art: #d4a373;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-canvas);
+            color: var(--charcoal);
+            background-image: radial-gradient(#d4a373 0.75px, transparent 0.75px), radial-gradient(#d4a373 0.75px, var(--bg-canvas) 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            line-height: 1.6;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: rgba(251, 247, 240, 0.95);
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--border-art);
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-terracotta);
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            margin-left: 1.5rem;
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-terracotta);
+        }
+
+        /* Hero Banner */
+        .hero {
+            padding: 4rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(140, 59, 43, 0.08) 0%, rgba(198, 139, 89, 0.15) 100%);
+            border-bottom: 1px solid var(--border-art);
+        }
+
+        .hero h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            color: var(--primary-terracotta);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p.tagline {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-terracotta);
+            color: #fff;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(140, 59, 43, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Category Section Header */
+        .category-header {
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--primary-terracotta);
+            margin: 4rem 0 1.5rem 0;
+            position: relative;
+        }
+
+        .category-header::after {
+            content: '❖';
+            display: block;
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            margin-top: 0.2rem;
+        }
+
+        /* Gallery Grid */
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .art-card {
+            background: var(--soft-cream);
+            border: 1px solid var(--border-art);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .art-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .art-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-art);
+        }
+
+        .art-info {
+            padding: 1.2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .art-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.15rem;
+            margin-bottom: 0.4rem;
+            color: var(--charcoal);
+        }
+
+        .art-desc {
+            font-size: 0.88rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+
+        .art-price {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary-terracotta);
+            margin-bottom: 0.8rem;
+        }
+
+        /* Custom Order Form */
+        .custom-order {
+            max-width: 900px;
+            margin: 5rem auto;
+            background: rgba(244, 236, 225, 0.9);
+            border: 2px dashed var(--border-art);
+            padding: 2.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .custom-order h2 {
+            font-family: 'Cinzel', serif;
+            color: var(--primary-terracotta);
+            margin-bottom: 1rem;
+        }
+
+        .order-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            text-align: left;
+            margin-top: 1.5rem;
+        }
+
+        .order-form .full-width {
+            grid-column: span 2;
+        }
+
+        .order-form input, .order-form select, .order-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-art);
+            border-radius: 6px;
+            background: var(--bg-canvas);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Contact & Footer */
+        .contact-section {
+            background-color: var(--charcoal);
+            color: var(--bg-canvas);
+            padding: 3rem 2rem 1.5rem 2rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        .contact-grid {
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .contact-item a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        footer {
+            border-top: 1px solid #444;
+            padding-top: 1.5rem;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 1rem; }
+            nav a { margin: 0 0.5rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .order-form { grid-template-columns: 1fr; }
+            .order-form .full-width { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo">Tapa Kushwah Art</div>
+        <nav>
+            <a href="#wall-art">Wall Art</a>
+            <a href="#paintings">Devotional Paintings</a>
+            <a href="#pen-sketches">Pen Landscapes</a>
+            <a href="#sketches">Character Studies</a>
+            <a href="#custom-order">Custom Order</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Handcrafted Fine Art & Custom Murals</h1>
+        <p class="tagline">Bringing devotional strength & fine sketch art to life</p>
+        <a href="#custom-order" class="btn">Order Custom Artwork</a>
+    </section>
+
+    <!-- CATEGORY 1: WALL MURALS & PAINTINGS -->
+    <h2 class="category-header" id="wall-art">Wall Murals & Large Paintings</h2>
+    <div class="gallery-container">
+        
+        <div class="art-card">
+            <img src="iuwefewln.jpeg" alt="Rudra Hanuman Ji Wall Painting" class="art-img">
+            <div class="art-info">
+                <div>
+                    <h3 class="art-title">Mighty Hanuman Ji Wall Mural</h3>
+                    <p class="art-desc">Hand-painted large scale wall artwork showcasing Lord Hanuman in strong warrior posture with intricate details.</p>
+                </div>
+                <div>
+                    <div class="art-price">Custom Order</div>
+                    <a href="https://wa.me/919105200836?text=Hi%20Tapa,%20I%20am%20interested%20in%20a%20Wall%20Mural%20painting%20similar%20to%20Hanuman%20Ji." target="_blank" class="btn" style="width:100%; text-align:center;">Inquire on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CATEGORY 2: CANVAS DEVOTIONAL PAINTINGS -->
+    <h2 class="category-header" id="paintings">Devotional & Cultural Canvas Art</h2>
+    <div class="gallery-container">
+        
+        <div class="art-card">
+            <img src="WhatsApp Image 2026-09-15 at 8.32.51 PM.jpeg" alt="Meditating Hanuman Ji Painting" class="art-img">
+            <div class="art-info">
+                <div>
+                    <h3 class="art-title">Meditating Hanuman Ji (Dhyan Mudra)</h3>
+                    <p class="art-desc">Serene canvas artwork portraying Lord Hanuman in deep meditation with soothing atmospheric backdrop tones.</p>
+                </div>
+                <div>
+                    <div class="art-price">Available on Request</div>
+                    <a href="https://wa.me/919105200836?text=Hi%20Tapa,%20I%20am%20interested%20in%20buying/ordering%20the%20Meditating%20Hanuman%20Ji%20painting." target="_blank" class="btn" style="width:100%; text-align:center;">Order on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="WhatsApp Image 2026-09-15 at 8.32.52 PM.jpeg" alt="Mahadev & Sadhus River Ghat Painting" class="art-img">
+            <div class="art-info">
+                <div>
+                    <h3 class="art-title">Ganga Ghat & Sadhus Painting</h3>
+                    <p class="art-desc">Atmospheric traditional canvas painting illustrating Mahadev and holy ascetics at sacred river ghats.</p>
+                </div>
+                <div>
+                    <div class="art-price">Available on Request</div>
+                    <a href="https://wa.me/919105200836?text=Hi%20Tapa,%20I%20am%20interested%20in%20buying/ordering%20the%20Ganga%20Ghat%20Sadhus%20painting." target="_blank" class="btn" style="width:100%; text-align:center;">Order on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CATEGORY 3: FINE LINE PEN SKETCHES -->
+    <h2 class="category-header" id="pen-sketches">Fine Line Pen Landscapes</h2>
+    <div class="gallery-container">
+        
+        <div class="art-card">
+            <img src="lbbbkb.jpeg" alt="Mountain Lake Cabin Pen Sketch" class="art-img">
+            <div class="art-info">
+                <div>
+                    <h3 class="art-title">Alpine Mountain & Lake Landscape</h3>
+                    <p class="art-desc">Detailed ink rollerball pen sketch capturing reflections, pine trees, and mountain peaks.</p>
+                </div>
+                <div>
+                    <div class="art-price">₹1,500</div>
+                    <a href="https://wa.me/919105200836?text=Hi%20Tapa,%20I%20want%20to%20order/buy%20the%20Alpine%20Mountain%20Pen%20Sketch." target="_blank" class="btn" style="width:100%; text-align:center;">Order on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="WhatsApp Image 2026-09-15 at 8.32.53 PMk;.jpeg" alt="Coastal Tree & Rocks Pen Sketch" class="art-img">
+            <div class="art-info">
+                <div>
+                    <h3 class="art-title">Coastal Tree & Rock Landscape</h3>
+                    <p class="art-desc">Hand-drawn fine pen artwork focused on organic line textures, coastal rocks, and tree foliage.</p>
+                </div>
+                <div>
+                    <div class="art-price">₹1,500</div>
+                    <a href="https://wa.me/919105200836?text=Hi%20Tapa,%20I%20want%20to%20order/buy%20the%20Coastal%20Tree%20Pen%20Sketch." target="_blank" class="btn" style="width:100%; text-align:center;">Order on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- CATEGORY 4: GRAPHITE & CONCEPT SKETCHES -->
+    <h2 class="category-header" id="sketches">Graphite & Concept Studies</h2>
+    <div class="gallery-container">
+        
+        <div class="art-card">
+            <img src="p.jpeg" alt="Shiv Ji Devotional Composition Sketch" class="art-img">
+            <div class="art-info">
+                <div>
+                    <h3 class="art-title">Shiv Ji & Human Emotion Composition</h3>
+                    <p class="art-desc">Creative pen concept art combining Lord Shiva portrait and expressive figure drawings in a single sheet.</p>
+                </div>
+                <div>
+                    <div class="art-price">₹1,200</div>
+                    <a href="https://wa.me/919105200836?text=Hi%20Tapa,%20I%20want%20to%20order/buy%20the%20Shiv%20Ji%20Composition%20Sketch." target="_blank" class="btn" style="width:100%; text-align:center;">Order on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="art-card">
+            <img src="WhatsApp Image 2026-09-15 at 8.32.52 PM,k.jpeg" alt="Expressive Character Sheet Pencil Sketch" class="art-img">
+            <div class="art-info">
+                <div>
+                    <h3 class="art-title">Expressive Character Pencil Sheet</h3>
+                    <p class="art-desc">Diverse facial expressions, caricature features, and character shading pencil practice study.</p>
+                </div>
+                <div>
+                    <div class="art-price">₹1,200</div>
+                    <a href="https://wa.me/919105200836?text=Hi%20Tapa,%20I%20want%20to%20order/buy%20the%20Expressive%20Character%20Pencil%20Sheet." target="_blank" class="btn" style="width:100%; text-align:center;">Order on WhatsApp</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Custom Order Section -->
+    <div class="custom-order" id="custom-order">
+        <h2>Order Custom Artwork or Wall Mural</h2>
+        <p>Send your requirements for personalized sketches, canvas art, or custom wall murals.</p>
+
+        <form class="order-form" onsubmit="sendOrderToWhatsApp(event)">
+            <input type="text" id="custName" placeholder="Your Name" required>
+            <input type="tel" id="custPhone" placeholder="Your Mobile Number" required>
+            
+            <select id="artType" required class="full-width">
+                <option value="" disabled selected>Select Category</option>
+                <option value="Wall Mural / Wall Painting">Wall Mural / Wall Painting</option>
+                <option value="Devotional Canvas Painting">Devotional Canvas Painting</option>
+                <option value="Fine Line Pen Sketch">Fine Line Pen Sketch</option>
+                <option value="Pencil / Charcoal Portrait">Pencil / Charcoal Portrait</option>
+            </select>
+
+            <textarea id="artDetails" class="full-width" rows="4" placeholder="Describe your requirement (e.g. Size, Subject, Wall Dimensions, Deadline)..." required></textarea>
+
+            <div class="full-width" style="text-align: center; margin-top: 1rem;">
+                <button type="submit" class="btn">Send Commission Request</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section" id="contact">
+        <h2 style="font-family: 'Cinzel', serif; color: var(--accent-gold); margin-bottom: 1.5rem;">Get In Touch</h2>
+        
+        <div class="contact-grid">
+            <div class="contact-item">
+                <a href="https://wa.me/919105200836" target="_blank">
+                    📞 Phone / WhatsApp: +91 9105200836
+                </a>
+            </div>
+            <div class="contact-item">
+                <a href="https://www.instagram.com/tapa_kushwah_art" target="_blank">
+                    📷 Instagram: @tapa_kushwah_art
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Tapa Kushwah Art. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function sendOrderToWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('custName').value;
+            const phone = document.getElementById('custPhone').value;
+            const artType = document.getElementById('artType').value;
+            const details = document.getElementById('artDetails').value;
+
+            const message = `Hello Tapa Kushwah Art! I would like to place a custom order.%0A%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Category:* ${artType}%0A*Details:* ${details}`;
+            
+            window.open(`https://wa.me/919105200836?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
